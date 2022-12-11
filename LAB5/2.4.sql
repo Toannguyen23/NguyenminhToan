@@ -1,0 +1,15 @@
+select HONV, TENNV, TENPHG, NHANVIEN.MANV, THANNHAN.*
+from NHANVIEN
+inner join PHONGBAN on PHONGBAN.MAPHG = NHANVIEN.PHG
+left outer join THANNHAN on THANNHAN.MA_NVIEN = NHANVIEN.MANV
+where THANNHAN.MA_NVIEN is null and TRPHG = '008'
+
+create proc lab5_bai2_d @MaTP varchar(10)
+as
+begin
+	select HONV, TENNV, TENPHG, NHANVIEN.MANV, THANNHAN.*
+	from NHANVIEN
+	inner join PHONGBAN on PHONGBAN.MAPHG = NHANVIEN.PHG
+	left outer join THANNHAN on THANNHAN.MA_NVIEN = NHANVIEN.MANV
+	where THANNHAN.MA_NVIEN is null and TRPHG = @MaTP
+end
